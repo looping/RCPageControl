@@ -1,0 +1,5 @@
+platform :ios, '6.0'
+
+pod 'pop'
+pod 'iCarousel'
+pod 'RCPageControl', :path => '../'
