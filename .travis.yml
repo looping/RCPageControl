@@ -1,0 +1,4 @@
+language: objective-c
+before_install: gem update cocoapods && cd RCPageControlExample
+script: xctool -workspace RCPageControlExample.xcworkspace -scheme RCPageControlExample -sdk iphonesimulator7.1  build
+
