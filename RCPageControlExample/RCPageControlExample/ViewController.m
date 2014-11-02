@@ -43,7 +43,7 @@
             
             [_pageControlRC setCenter:({
                 CGPoint center = self.view.center;
-                center.y = self.view.frame.size.height - 200.f;
+                center.y = self.view.frame.size.height - 160.f;
                 center;
             })];
             
@@ -63,7 +63,7 @@
             
             [_pageControlUI setCenter:({
                 CGPoint center = self.view.center;
-                center.y = 220.f;
+                center.y = 160.f;
                 center;
             })];
             
