@@ -48,7 +48,7 @@
             })];
             
             __weak ViewController *weakSelf = self;
-            [_pageControlRC setCurrentPageChanged:^(RCPageControl *pageControl) {
+            [_pageControlRC setCurrentPageChangedBlock:^(RCPageControl *pageControl) {
                 [weakSelf.pageViews scrollToItemAtIndex:pageControl.currentPage animated:YES];
             }];
         }

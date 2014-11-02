@@ -60,7 +60,7 @@ typedef void (^RCCurrentPageChangedBlock)(RCPageControl *pageControl);
 
 @property(nonatomic) UIFont *currentPageIndexTextFont;    // default is [UIFont systemFontOfSize:0], the font size is automatically adjusts by the value of indicatorDotWidth and animationScaleFactor
 
-@property (nonatomic, copy) RCCurrentPageChangedBlock currentPageChanged;   // if set, -sendActionsForControlEvents will never be called, only available for 'Touch Event' in page control, it also means you need to set non-zero frame for page control to activate 'Touch Event'
+@property (nonatomic, copy) RCCurrentPageChangedBlock currentPageChangedBlock;   // if set, -sendActionsForControlEvents will never be called, only available for 'Touch Event' in page control, it also means you need to set non-zero frame for page control to activate 'Touch Event'
 
 - (instancetype)initWithNumberOfPages:(NSInteger)pages; // if you want 'currentPageChanged' block available, call -setFrame: after initialization
 

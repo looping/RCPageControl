@@ -261,8 +261,8 @@
         [self setCurrentPage:self.currentPage + 1 forceRefresh:NO];
     }
     
-    if (_currentPageChanged) {
-        _currentPageChanged(self);
+    if (_currentPageChangedBlock) {
+        _currentPageChangedBlock(self);
     } else {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
