@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E193FF01A0665C200F6FE20 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E193FEF1A0665C200F6FE20 /* avatar@2x.png */; };
 		6E2F733B19C72600008985F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F733A19C72600008985F7 /* main.m */; };
 		6E2F733E19C72600008985F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F733D19C72600008985F7 /* AppDelegate.m */; };
 		6E2F734119C72600008985F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F734019C72600008985F7 /* ViewController.m */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E193FEF1A0665C200F6FE20 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		6E2F733519C72600008985F7 /* RCPageControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCPageControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2F733919C72600008985F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E2F733A19C72600008985F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		6E2F733819C72600008985F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E193FEF1A0665C200F6FE20 /* avatar@2x.png */,
 				6E2F733919C72600008985F7 /* Info.plist */,
 				6E2F733A19C72600008985F7 /* main.m */,
 			);
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E2F734419C72600008985F7 /* Main.storyboard in Resources */,
+				6E193FF01A0665C200F6FE20 /* avatar@2x.png in Resources */,
 				6E2F734919C72601008985F7 /* LaunchScreen.xib in Resources */,
 				6E2F734619C72601008985F7 /* Images.xcassets in Resources */,
 			);

@@ -83,7 +83,20 @@
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
-    UIView *theNewView = view ?: [[UIView alloc] initWithFrame:self.view.frame];
+    UIView *theNewView = view ?: ({
+        UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
+        
+        [view addSubview:({
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+            [imageView setCenter:view.center];
+            [imageView setImage:[UIImage imageNamed:@"avatar"]];
+            [imageView.layer setCornerRadius:imageView.frame.size.height / 2];
+            [imageView.layer setMasksToBounds:YES];
+            imageView;
+        })];
+        
+        view;
+    });
     
     [theNewView setBackgroundColor:index % 3 ? index % 2 ? [[UIColor purpleColor] colorWithAlphaComponent:0.5] : [[UIColor blueColor] colorWithAlphaComponent:0.5] : [[UIColor cyanColor] colorWithAlphaComponent:0.5]];
     
