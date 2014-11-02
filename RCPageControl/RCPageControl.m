@@ -207,8 +207,6 @@
     if ( !CGRectEqualToRect(self.frame, frame)) {
         [super setFrame:frame];
         [self _refreshIndicator:YES];
-        
-        NSLog(@"%@, %@", NSStringFromCGRect(self.frame), NSStringFromCGRect(super.frame));
     }
 }
 
