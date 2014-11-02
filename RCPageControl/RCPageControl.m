@@ -377,7 +377,7 @@
             [self bringSubviewToFront:_indicatorIndexLabel];
 
             [_indicatorIndexLabel setCenter:[self _dotAtIndex:toPage].center];
-            [_indicatorIndexLabel setText:[NSString stringWithFormat:@"%d", toPage + 1]];
+            [_indicatorIndexLabel setText:[NSString stringWithFormat:@"%@", @(toPage + 1)]];
 
             [_indicatorIndexLabel setAlpha:.3f];
             
