@@ -129,7 +129,7 @@ We use `POPSpringAnimation` for dots animation. See [POPSpringAnimation.h](https
 
 
 #### animationDuration
-The duration for `UIView animation`. Using in `_indicatorIndexLabel` animation. Only available when `hideCurrentPageIndex` is setting to `NO`. Default is `0.6f`. We will using `POPBasicAnimation` for next released version.
+The duration for `UIView animation`. Using in `_indicatorIndexLabel` animation. Only available when `hideCurrentPageIndex` is setting to `NO`. Default is `0.6f`. 
 
 
 #### animationScaleFactor
