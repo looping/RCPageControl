@@ -379,7 +379,7 @@
             [_indicatorIndexLabel setText:[NSString stringWithFormat:@"%@", @(toPage + 1)]];
             
             POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-            alphaAnimation.fromValue = @(.3f);
+            alphaAnimation.fromValue = @(0.f);
             alphaAnimation.toValue = @(1.f);
             alphaAnimation.duration = _disableAnimation ? 0 : _animationDuration;
             [_indicatorIndexLabel pop_addAnimation:alphaAnimation forKey:RCDefaultIndicatorIndexLabelAlphaAnimationKey];
