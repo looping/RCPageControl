@@ -48,6 +48,7 @@
 
 #define RCDefaultIndicatorScaleAnimationKey @"RCPageControlIndicatorScaleAnimation"
 #define RCDefaultIndicatorColorAnimationKey @"RCPageControlIndicatorColorAnimation"
+#define RCDefaultIndicatorIndexLabelAlphaAnimationKey @"RCDefaultIndicatorIndexLabelAlphaAnimationKey"
 
 #define IsFloatZero(A) fabsf(A) < FLT_EPSILON
 #define IsFloatEqualToFloat(A, B) IsFloatZero((A) - (B))
@@ -376,12 +377,12 @@
 
             [_indicatorIndexLabel setCenter:[self _dotAtIndex:toPage].center];
             [_indicatorIndexLabel setText:[NSString stringWithFormat:@"%@", @(toPage + 1)]];
-
-            [_indicatorIndexLabel setAlpha:.3f];
             
-            [UIView animateWithDuration:_disableAnimation ? 0 : _animationDuration animations:^{
-                [_indicatorIndexLabel setAlpha:1.f];
-            }];
+            POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+            alphaAnimation.fromValue = @(.3f);
+            alphaAnimation.toValue = @(1.f);
+            alphaAnimation.duration = _disableAnimation ? 0 : _animationDuration;
+            [_indicatorIndexLabel pop_addAnimation:alphaAnimation forKey:RCDefaultIndicatorIndexLabelAlphaAnimationKey];
         }
     }
 }
