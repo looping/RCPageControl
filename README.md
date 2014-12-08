@@ -76,14 +76,14 @@ as `UIPageControl`.
 ### Initialization
 
 
-#### Using `initWithFrame:`
+- Using `initWithFrame:`
 
 ```objective-c
 RCPageControl *pageControl = [RCPageControl initWithFrame:CGRectMake(0, 0, 100, 10)];
 ```
 
 
-#### Using `initWithNumberOfPages:`
+- Using `initWithNumberOfPages:`
 
 ```objective-c
 RCPageControl *pageControl = [RCPageControl initWithNumberOfPages:5];
@@ -94,14 +94,14 @@ RCPageControl *pageControl = [RCPageControl initWithNumberOfPages:5];
 ### Callback
 
 
-#### Using `UIControlEvent`
+- Using `UIControlEvent`
 
 ```objective-c
 [pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
 ```
 
 
-#### Using `RCCurrentPageChangedBlock`
+- Using `RCCurrentPageChangedBlock`
 
 ```objective-c
 [pageControl setCurrentPageChangedBlock:^(RCPageControl *pageControl) {
@@ -116,47 +116,56 @@ RCPageControl *pageControl = [RCPageControl initWithNumberOfPages:5];
 Just list new properties of `RCPageControl`.
 
 
-#### indicatorDotGap
+- **indicatorDotGap**
 The distance between two dots from their edges. Default value is `10.f`, cannot be smaller than `2.f`.
 
 
-#### indicatorDotWidth
+- **indicatorDotWidth**
 The width of dot, you may assume that the dot is likes a circle. Default value is `4.f`, cannot be smaller than `2.f`.
 
 
-#### animationSpeed & animationBounciness
+- **animationSpeed** & **animationBounciness**
+
 We use `POPSpringAnimation` for dots animation. See [POPSpringAnimation.h](https://github.com/facebook/pop/blob/master/pop/POPSpringAnimation.h) for more info.
 
 
-#### animationDuration
+- **animationDuration**
+
 The duration for `UIView animation`. Using in `_indicatorIndexLabel` animation. Only available when `hideCurrentPageIndex` is setting to `NO`. Default is `0.6f`. 
 
 
-#### animationScaleFactor
+- **animationScaleFactor**
+
 The dot scale factor. Using to calculate the width of current dot. Default is `2`.
 
 
-#### hideCurrentPageIndex
+- **hideCurrentPageIndex**
+
 When set to `YES`, the `Page Index Label` will be hidden. Default is `NO`. The displayed page is start from `1`.
 
 
-#### disableAnimation
+- **disableAnimation**
+
 When set to `YES`, all indicator dots' changing animation will be disabled. Default is `NO`.
 
 
-#### pageIndicatorTintColor 
+- **pageIndicatorTintColor**
+
 The dot background color. Default is `[UIColor lightTextColor]`.
 
 
-#### currentPageIndicatorTintColor
+- **currentPageIndicatorTintColor**
+
 The current dot background color. Default is `[UIColor whiteColor]`.
 
 
-#### currentPageIndexTextTintColor
+- **currentPageIndexTextTintColor**
+
 The `Page Index Label`'s `TextColor`. Default is `[UIColor darkTextColor]`.
 
 
-#### currentPageIndexTextFont
+- **currentPageIndexTextFont**
+
 The `Page Index Label`'s `Font`. Default is `[UIFont systemFontOfSize:0]`. The font size will automatically adjusts by the value of `indicatorDotWidth` and `animationScaleFactor`
 
 
