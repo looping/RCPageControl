@@ -407,8 +407,21 @@
             for (; index < _numberOfPages; index ++) {
                 CGRect frame = CGRectMake(position.x + index * (_indicatorDotGap + _indicatorDotWidth), position.y, _indicatorDotWidth, _indicatorDotWidth);
                 UIView *dot = [self _dotAtIndex:index] ?: [[UIView alloc] initWithFrame:frame];
+                
+                if ([UIView respondsToSelector:@selector(performWithoutAnimation:)]) {
+                    [UIView performWithoutAnimation:^{
+                        [dot setTransform:CGAffineTransformIdentity];
+                    }];
+                } else {
+                    BOOL reenableAnimations = [UIView areAnimationsEnabled];
+                    [UIView setAnimationsEnabled:NO];
+                    [dot setTransform:CGAffineTransformIdentity];
+                    [UIView setAnimationsEnabled:reenableAnimations];
+                }
+                
                 [dot setTag:[self _dotTagAtIndex:index]];
                 [dot setBackgroundColor:_pageIndicatorTintColor];
+                
                 [dot.layer setMasksToBounds:YES];
                 [dot.layer setCornerRadius:dot.frame.size.height / 2];
                 
