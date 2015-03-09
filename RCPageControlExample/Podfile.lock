@@ -1,6 +1,6 @@
 PODS:
-  - iCarousel (1.8)
-  - pop (1.0.6)
+  - iCarousel (1.8.1)
+  - pop (1.0.7)
   - RCPageControl (0.1):
     - pop
 
@@ -14,8 +14,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  iCarousel: cf77aea48dfcde9a0cd85569a1d8a9b6dd543bd7
-  pop: e518794da38942c05255eb64b36d894e70cb4f00
-  RCPageControl: 9fa863ee5f220f76e1fac7a3f834e07325074302
+  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  RCPageControl: bdfb2c9322b41bc4e4a166e585f4a6564e14643b
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.36.0.rc.1
