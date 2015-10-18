@@ -15,6 +15,7 @@
 		6E2F734619C72601008985F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E2F734519C72601008985F7 /* Images.xcassets */; };
 		6E2F734919C72601008985F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E2F734719C72601008985F7 /* LaunchScreen.xib */; };
 		6E2F735519C72601008985F7 /* RCPageControlExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F735419C72601008985F7 /* RCPageControlExampleTests.m */; };
+		B266C4C91BD3DD6500604FD1 /* CustomIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B266C4C81BD3DD6500604FD1 /* CustomIndicatorView.m */; settings = {ASSET_TAGS = (); }; };
 		D49C37915C534FBF81B1C62C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1326DC0F37B4CD9B3DC981C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,8 @@
 		6E2F735319C72601008985F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E2F735419C72601008985F7 /* RCPageControlExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCPageControlExampleTests.m; sourceTree = "<group>"; };
 		6E55D24919C97C01008E8B03 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B266C4C71BD3DD6500604FD1 /* CustomIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIndicatorView.h; sourceTree = "<group>"; };
+		B266C4C81BD3DD6500604FD1 /* CustomIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIndicatorView.m; sourceTree = "<group>"; };
 		DAF73DA31F7F816C3C0D9AD6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E1326DC0F37B4CD9B3DC981C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,6 +98,8 @@
 				6E2F733D19C72600008985F7 /* AppDelegate.m */,
 				6E2F733F19C72600008985F7 /* ViewController.h */,
 				6E2F734019C72600008985F7 /* ViewController.m */,
+				B266C4C71BD3DD6500604FD1 /* CustomIndicatorView.h */,
+				B266C4C81BD3DD6500604FD1 /* CustomIndicatorView.m */,
 				6E2F734219C72600008985F7 /* Main.storyboard */,
 				6E2F734519C72601008985F7 /* Images.xcassets */,
 				6E2F734719C72601008985F7 /* LaunchScreen.xib */,
@@ -160,6 +165,7 @@
 				6E2F733219C72600008985F7 /* Frameworks */,
 				6E2F733319C72600008985F7 /* Resources */,
 				4205A7A3089C4258B519BEEC /* Copy Pods Resources */,
+				C44C854C1AC0DA35B6023388 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,6 +283,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C44C854C1AC0DA35B6023388 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -287,6 +308,7 @@
 				6E2F734119C72600008985F7 /* ViewController.m in Sources */,
 				6E2F733E19C72600008985F7 /* AppDelegate.m in Sources */,
 				6E2F733B19C72600008985F7 /* main.m in Sources */,
+				B266C4C91BD3DD6500604FD1 /* CustomIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
