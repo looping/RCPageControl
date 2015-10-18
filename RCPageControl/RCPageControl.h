@@ -31,6 +31,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "RCAbstractIndicatorView.h"
 
 @class RCPageControl;
 
@@ -60,9 +61,12 @@ typedef void (^RCCurrentPageChangedBlock)(RCPageControl *pageControl);
 
 @property(nonatomic) UIFont *currentPageIndexTextFont;    // default is [UIFont systemFontOfSize:0], the font size is automatically adjusts by the value of indicatorDotWidth and animationScaleFactor
 
+@property (nonatomic, readonly) Class pageIndicatorViewClass;   //to use custom indicator view class, must use 'initWithPageControlClass'.
+
 @property (nonatomic, copy) RCCurrentPageChangedBlock currentPageChangedBlock;   // if set, -sendActionsForControlEvents will never be called, only available for 'Touch Event' in page control, it also means you need to set non-zero frame for page control to activate 'Touch Event'
 
 - (instancetype)initWithNumberOfPages:(NSInteger)pages; // if you want 'currentPageChanged' block available, call -setFrame: after initialization
+- (instancetype)initWithPageControlClass:(Class)class;
 
 - (void)updateCurrentPageDisplay;   // update page display to match the currentPage, ignored if defersCurrentPageDisplay is NO, setting the page value directly will update immediately
 

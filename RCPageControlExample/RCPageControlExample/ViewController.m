@@ -9,10 +9,12 @@
 #import "ViewController.h"
 #import <RCPageControl.h>
 #import <iCarousel.h>
+#import "CustomIndicatorView.h"
 
 @interface ViewController () <iCarouselDataSource, iCarouselDelegate>
 
 @property (nonatomic) RCPageControl *pageControlRC;
+@property (nonatomic) RCPageControl *pageControlRCCustomView;
 @property (nonatomic) iCarousel *pageViews;
 @property (nonatomic) NSInteger numberOfPages;
 @property (nonatomic) UIPageControl *pageControlUI;
@@ -38,12 +40,39 @@
     })];
     
     [self.view addSubview:({
+        if ( !_pageControlRCCustomView) {
+            _pageControlRCCustomView = [[RCPageControl alloc] initWithPageControlClass:[CustomIndicatorView class]];
+
+            _pageControlRCCustomView.numberOfPages = _numberOfPages;
+            _pageControlRCCustomView.indicatorDotWidth = 20.0f;
+            _pageControlRCCustomView.indicatorDotGap = 30.0f;
+            _pageControlRCCustomView.animationScaleFactor = 1.2f;
+            _pageControlRCCustomView.hideCurrentPageIndex = YES;
+            _pageControlRCCustomView.pageIndicatorTintColor = [UIColor colorWithRed:(48.0/255.0) green:(129.0/255.0) blue:(245.0/255.0) alpha:1.0f];
+            _pageControlRCCustomView.currentPageIndicatorTintColor = [UIColor whiteColor];
+            
+            [_pageControlRCCustomView setCenter:({
+                CGPoint center = self.view.center;
+                center.y = self.view.frame.size.height - 120.f;
+                center;
+            })];
+            
+            __weak ViewController *weakSelf = self;
+            [_pageControlRCCustomView setCurrentPageChangedBlock:^(RCPageControl *pageControl) {
+                [weakSelf.pageViews scrollToItemAtIndex:pageControl.currentPage animated:YES];
+            }];
+        }
+        _pageControlRCCustomView;
+    })];
+
+    
+    [self.view addSubview:({
         if ( !_pageControlRC) {
             _pageControlRC = [[RCPageControl alloc] initWithNumberOfPages:_numberOfPages];
             
             [_pageControlRC setCenter:({
                 CGPoint center = self.view.center;
-                center.y = self.view.frame.size.height - 160.f;
+                center.y = self.view.frame.size.height - 220.f;
                 center;
             })];
             
@@ -54,6 +83,7 @@
         }
         _pageControlRC;
     })];
+    
     
     [self.view addSubview:({
         if ( !_pageControlUI) {
@@ -105,6 +135,7 @@
 
 - (void)carouselDidEndScrollingAnimation:(iCarousel *)carousel {    
     [_pageControlRC setCurrentPage:carousel.currentItemIndex];
+    [_pageControlRCCustomView setCurrentPage:carousel.currentItemIndex];
     [_pageControlUI setCurrentPage:carousel.currentItemIndex];
 }
 

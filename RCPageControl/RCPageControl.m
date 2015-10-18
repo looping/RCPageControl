@@ -87,6 +87,16 @@
     return pageControl;
 }
 
+- (instancetype)initWithPageControlClass:(Class)class {
+    RCPageControl *pageControl = [self init];
+    
+    if (class) {
+        [pageControl setPageIndicatorViewClass:class];
+    }
+    
+    return pageControl;
+}
+
 - (void)awakeFromNib {
     [self commConfig];
 }
@@ -253,6 +263,13 @@
     }
 }
 
+- (void)setPageIndicatorViewClass:(Class)pageIndicatorViewClass {
+    if ( ![_pageIndicatorViewClass isEqual:pageIndicatorViewClass]) {
+        _pageIndicatorViewClass = pageIndicatorViewClass;
+        [self _refreshIndicator:YES];
+    }
+}
+
 #pragma mark - Touch Event
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -357,6 +374,16 @@
 }
 
 - (void)_dotColorAnimationAtIndex:(NSInteger)index withProgress:(CGFloat)progress {
+    
+    if (self.pageIndicatorViewClass) {
+        
+        RCAbstractIndicatorView *view = (RCAbstractIndicatorView *)[self _dotAtIndex:index];
+        
+        if ([view respondsToSelector:@selector(updateState:)]) {
+            [view updateState:(index == _currentDisplayedPage) ? YES : NO];
+        }
+    }
+    
     [self _dotColorAnimationAtIndex:index toValue:(index == _currentDisplayedPage) ? _currentPageIndicatorTintColor : _pageIndicatorTintColor];
 }
 
@@ -406,7 +433,25 @@
 
             for (; index < _numberOfPages; index ++) {
                 CGRect frame = CGRectMake(position.x + index * (_indicatorDotGap + _indicatorDotWidth), position.y, _indicatorDotWidth, _indicatorDotWidth);
-                UIView *dot = [self _dotAtIndex:index] ?: [[UIView alloc] initWithFrame:frame];
+
+                UIView *dot;
+                
+                if ([self _dotAtIndex:index]) {
+                    dot = [self _dotAtIndex:index];
+                } else {
+                    if (_pageIndicatorViewClass) {
+                        
+                        dot = (RCAbstractIndicatorView *)[[_pageIndicatorViewClass alloc] initWithFrame:frame];
+
+                        if ([dot respondsToSelector:@selector(updateState:)]) {
+                            [(RCAbstractIndicatorView *)dot updateState:(index == _currentDisplayedPage) ? YES : NO];
+                        }
+                        
+                    } else {
+                        dot = [[UIView alloc] initWithFrame:frame];
+                        [dot.layer setCornerRadius:(frame.size.width/2)];
+                    }
+                }
                 
                 if ([UIView respondsToSelector:@selector(performWithoutAnimation:)]) {
                     [UIView performWithoutAnimation:^{
@@ -421,9 +466,7 @@
                 
                 [dot setTag:[self _dotTagAtIndex:index]];
                 [dot setBackgroundColor:_pageIndicatorTintColor];
-                
                 [dot.layer setMasksToBounds:YES];
-                [dot.layer setCornerRadius:dot.frame.size.height / 2];
                 
                 if ( !dot.superview) {
                     [self addSubview:dot];

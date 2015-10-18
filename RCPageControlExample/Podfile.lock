@@ -1,7 +1,7 @@
 PODS:
-  - iCarousel (1.8.1)
-  - pop (1.0.7)
-  - RCPageControl (0.1):
+  - iCarousel (1.8.2)
+  - pop (1.0.8)
+  - RCPageControl (0.1.1):
     - pop
 
 DEPENDENCIES:
@@ -14,8 +14,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
-  RCPageControl: bdfb2c9322b41bc4e4a166e585f4a6564e14643b
+  iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  RCPageControl: d7f6a8f5e1f9ca9a8ed7dbe32b5c266cf2844070
 
-COCOAPODS: 0.36.0.rc.1
+COCOAPODS: 0.39.0
