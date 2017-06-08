@@ -1,5 +1,9 @@
 platform :ios, '6.0'
 
-pod 'pop'
-pod 'iCarousel'
-pod 'RCPageControl', :path => '../'
+target 'RCPageControlExample' do
+
+    pod 'pop'
+    pod 'iCarousel'
+    pod 'RCPageControl', :path => '../'
+
+end
