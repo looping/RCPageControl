@@ -50,7 +50,7 @@
 #define RCDefaultIndicatorColorAnimationKey @"RCPageControlIndicatorColorAnimation"
 #define RCDefaultIndicatorIndexLabelAlphaAnimationKey @"RCDefaultIndicatorIndexLabelAlphaAnimationKey"
 
-#define IsFloatZero(A) fabsf(A) < FLT_EPSILON
+#define IsFloatZero(A) (fabs(A) < FLT_EPSILON)
 #define IsFloatEqualToFloat(A, B) IsFloatZero((A) - (B))
 
 @interface RCPageControl ()
@@ -88,6 +88,8 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     [self commConfig];
 }
 
