@@ -1,0 +1,15 @@
+PODS:
+  - iCarousel (1.8.3)
+  - pop (1.0.10)
+
+DEPENDENCIES:
+  - iCarousel
+  - pop
+
+SPEC CHECKSUMS:
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+
+PODFILE CHECKSUM: 500e5f919d07fe70206af7b8761129a904c83b68
+
+COCOAPODS: 1.2.1

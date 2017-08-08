@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <RCPageControl.h>
+#import "RCPageControl.h"
 #import <iCarousel.h>
 
 @interface ViewController () <iCarouselDataSource, iCarouselDelegate>

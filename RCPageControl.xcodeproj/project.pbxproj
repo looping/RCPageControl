@@ -16,6 +16,7 @@
 		6E2F734619C72601008985F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E2F734519C72601008985F7 /* Images.xcassets */; };
 		6E2F734919C72601008985F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E2F734719C72601008985F7 /* LaunchScreen.xib */; };
 		6E2F735519C72601008985F7 /* RCPageControlExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F735419C72601008985F7 /* RCPageControlExampleTests.m */; };
+		6E8AFCF61F3A34370010C4F4 /* RCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8AFCF51F3A34370010C4F4 /* RCPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		6E2F735319C72601008985F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E2F735419C72601008985F7 /* RCPageControlExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCPageControlExampleTests.m; sourceTree = "<group>"; };
 		6E55D24919C97C01008E8B03 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		6E8AFCF41F3A34370010C4F4 /* RCPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPageControl.h; sourceTree = "<group>"; };
+		6E8AFCF51F3A34370010C4F4 /* RCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPageControl.m; sourceTree = "<group>"; };
 		D11654D66174B172FFDDF71E /* Pods-RCPageControlExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCPageControlExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RCPageControlExample/Pods-RCPageControlExample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD1395A5D82D7B32645E4135 /* Pods-RCPageControlExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCPageControlExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RCPageControlExample/Pods-RCPageControlExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +74,7 @@
 		6E2F732C19C72600008985F7 = {
 			isa = PBXGroup;
 			children = (
+				6E8AFCF31F3A34370010C4F4 /* RCPageControl */,
 				6E2F733719C72600008985F7 /* RCPageControlExample */,
 				6E2F735119C72601008985F7 /* RCPageControlExampleTests */,
 				6E2F733619C72600008985F7 /* Products */,
@@ -128,6 +132,15 @@
 				6E2F735319C72601008985F7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6E8AFCF31F3A34370010C4F4 /* RCPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				6E8AFCF41F3A34370010C4F4 /* RCPageControl.h */,
+				6E8AFCF51F3A34370010C4F4 /* RCPageControl.m */,
+			);
+			path = RCPageControl;
 			sourceTree = "<group>";
 		};
 		7C549DD4BE2E4976BC588DB1 /* Frameworks */ = {
@@ -208,7 +221,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6E2F733019C72600008985F7 /* Build configuration list for PBXProject "RCPageControlExample" */;
+			buildConfigurationList = 6E2F733019C72600008985F7 /* Build configuration list for PBXProject "RCPageControl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -302,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E2F734119C72600008985F7 /* ViewController.m in Sources */,
+				6E8AFCF61F3A34370010C4F4 /* RCPageControl.m in Sources */,
 				6E2F733E19C72600008985F7 /* AppDelegate.m in Sources */,
 				6E2F733B19C72600008985F7 /* main.m in Sources */,
 			);
@@ -495,7 +509,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E2F733019C72600008985F7 /* Build configuration list for PBXProject "RCPageControlExample" */ = {
+		6E2F733019C72600008985F7 /* Build configuration list for PBXProject "RCPageControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E2F735619C72601008985F7 /* Debug */,
