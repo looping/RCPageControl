@@ -58,6 +58,13 @@ typedef void (^RCCurrentPageChangedBlock)(RCPageControl *pageControl);
 @property(nonatomic) UIColor *currentPageIndicatorTintColor;    // default is [UIColor whiteColor]
 @property(nonatomic) UIColor *currentPageIndexTextTintColor;    // default is [UIColor darkTextColor]
 
+@property(nonatomic) BOOL pageIndicatorShadowEnabled;       // default is NO
+@property(nonatomic) UIColor *pageIndicatorShadowColor;     // default is [UIColor blackColor]
+@property(nonatomic) CGFloat pageIndicatorShadowRadius;     // default is 1.0f
+@property(nonatomic) CGFloat pageIndicatorShadowOpacity;    // default is 0.6f
+@property(nonatomic) CGSize pageIndicatorShadowOffset;      // default is {0.5f, 0.5f}
+
+
 @property(nonatomic) UIFont *currentPageIndexTextFont;    // default is [UIFont systemFontOfSize:0], the font size is automatically adjusts by the value of indicatorDotWidth and animationScaleFactor
 
 @property (nonatomic, copy) RCCurrentPageChangedBlock currentPageChangedBlock;   // if set, -sendActionsForControlEvents will never be called, only available for 'Touch Event' in page control, it also means you need to set non-zero frame for page control to activate 'Touch Event'

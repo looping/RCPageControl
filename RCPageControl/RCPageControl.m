@@ -116,7 +116,12 @@
     _pageIndicatorTintColor = [UIColor lightTextColor];
     _currentPageIndicatorTintColor = [UIColor whiteColor];
     _currentPageIndexTextTintColor = [UIColor darkTextColor];
-    
+
+    _pageIndicatorShadowColor   = [UIColor darkGrayColor];
+    _pageIndicatorShadowOpacity = 0.6f;
+    _pageIndicatorShadowRadius  = 1.0f;
+    _pageIndicatorShadowOffset  = CGSizeMake(0.5f, 0.5f);
+
     _currentPageIndexTextFont = [UIFont systemFontOfSize:0];
     
     [self loadIndicatorIndexLabel];
@@ -252,6 +257,42 @@
     if ( ![_currentPageIndexTextFont isEqual:currentPageIndexTextFont]) {
         _currentPageIndexTextFont = currentPageIndexTextFont;
         [self loadIndicatorIndexLabel];
+    }
+}
+
+
+- (void)setPageIndicatorShadowColor:(UIColor *)pageIndicatorShadowColor {
+    if ( ![_pageIndicatorShadowColor isEqual:pageIndicatorShadowColor]) {
+        _pageIndicatorShadowColor = pageIndicatorShadowColor;
+        [self _refreshIndicator:YES];
+    }
+}
+
+- (void)setPageIndicatorShadowOffset:(CGSize)pageIndicatorShadowOffset {
+    if ( !CGSizeEqualToSize(_pageIndicatorShadowOffset, pageIndicatorShadowOffset) ) {
+        _pageIndicatorShadowOffset = pageIndicatorShadowOffset;
+        [self _refreshIndicator:YES];
+    }
+}
+
+- (void)setPageIndicatorShadowRadius:(CGFloat)pageIndicatorShadowRadius {
+    if ( _pageIndicatorShadowRadius != pageIndicatorShadowRadius ) {
+        _pageIndicatorShadowRadius = pageIndicatorShadowRadius;
+        [self _refreshIndicator:YES];
+    }
+}
+
+- (void)setPageIndicatorShadowOpacity:(CGFloat)pageIndicatorShadowOpacity {
+    if ( _pageIndicatorShadowOpacity != pageIndicatorShadowOpacity ) {
+        _pageIndicatorShadowOpacity = pageIndicatorShadowOpacity;
+        [self _refreshIndicator:YES];
+    }
+}
+
+- (void)setPageIndicatorShadowEnabled:(BOOL)pageIndicatorShadowEnabled {
+    if ( _pageIndicatorShadowEnabled != pageIndicatorShadowEnabled ) {
+        _pageIndicatorShadowEnabled = pageIndicatorShadowEnabled;
+        [self _refreshIndicator:YES];
     }
 }
 
@@ -424,8 +465,15 @@
                 [dot setTag:[self _dotTagAtIndex:index]];
                 [dot setBackgroundColor:_pageIndicatorTintColor];
                 
-                [dot.layer setMasksToBounds:YES];
+                [dot.layer setMasksToBounds:NO];
                 [dot.layer setCornerRadius:dot.frame.size.height / 2];
+                
+                if ( _pageIndicatorShadowEnabled ) {
+                    [dot.layer setShadowRadius:_pageIndicatorShadowRadius];
+                    [dot.layer setShadowColor:_pageIndicatorShadowColor.CGColor];
+                    [dot.layer setShadowOffset:_pageIndicatorShadowOffset];
+                    [dot.layer setShadowOpacity:_pageIndicatorShadowOpacity];
+                }
                 
                 if ( !dot.superview) {
                     [self addSubview:dot];
