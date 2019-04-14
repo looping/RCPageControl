@@ -17,12 +17,12 @@ typedef void (^RCCurrentPageChangedBlock)(RCPageControl *pageControl);
 @property (nonatomic) NSInteger numberOfPages;  // default is 0
 @property (nonatomic) NSInteger currentPage;    // default is 0. value pinned to 0 .. numberOfPages-1
 
-@property (nonatomic) CGFloat indicatorDotGap;  // default is 10.f, min value is 2.f
-@property (nonatomic) CGFloat indicatorDotWidth;    // default is 4.f, min value is 2.f
+@property (nonatomic) CGFloat indicatorDotGap;  // default is 10.0, min value is 2.0
+@property (nonatomic) CGFloat indicatorDotWidth;    // default is 4.0, min value is 2.0
 
-@property (nonatomic) CGFloat animationSpeed;   // default is 8.f
-@property (nonatomic) CGFloat animationBounciness;  // default is 12.f
-@property (nonatomic) CGFloat animationDuration;    // default is .6f
+@property (nonatomic) CGFloat animationSpeed;   // default is 8.0
+@property (nonatomic) CGFloat animationBounciness;  // default is 12.0
+@property (nonatomic) CGFloat animationDuration;    // default is 0.6
 @property (nonatomic) NSInteger animationScaleFactor;   // default is 2
 
 @property (nonatomic) BOOL hidesForSinglePage;  // hide the indicator if there is only one page, default is NO
@@ -45,6 +45,6 @@ typedef void (^RCCurrentPageChangedBlock)(RCPageControl *pageControl);
 - (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;    // returns size required to display dots for given page count. can be used to size control if page count could change
 - (CGPoint)positionForNumberOfPages:(NSInteger)pageCount;   // returns position to display dots for defined control frame and given page count. can be used to size control if control frame or page count could change
 
-- (void)switchToPage:(NSInteger)page progress:(CGFloat)progress;    // default page animation progress is 1.f, value is between (0.01f 1.f]
+- (void)switchToPage:(NSInteger)page progress:(CGFloat)progress;    // default page animation progress is 1.0, value is between (0.01 1.0]
 
 @end

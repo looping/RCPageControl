@@ -11,16 +11,16 @@
 
 #define RCDefaultIndicatorDotBaseTag 1009
 
-#define RCDefaultIndicatorDotGapMinValue 2.f
-#define RCDefaultIndicatorDotWidthMinValue 2.f
+#define RCDefaultIndicatorDotGapMinValue 2.0
+#define RCDefaultIndicatorDotWidthMinValue 2.0
 
-#define RCDefaultIndicatorDotAnimationDurationMinValue 0.01f
+#define RCDefaultIndicatorDotAnimationDurationMinValue 0.01
 #define RCDefaultIndicatorDotScaleFactorMinValue 0
 
-#define RCDefaultIndicatorDotIndexDisplayMinWidth 8.f
+#define RCDefaultIndicatorDotIndexDisplayMinWidth 8.0
 
-#define RCDefaultIndicatorDotChangeProgressMaxValue 1.f
-#define RCDefaultIndicatorDotChangeProgressMinValue .01f
+#define RCDefaultIndicatorDotChangeProgressMaxValue 1.0
+#define RCDefaultIndicatorDotChangeProgressMinValue 0.01
 
 #define RCDefaultIndicatorScaleAnimationKey @"RCPageControlIndicatorScaleAnimation"
 #define RCDefaultIndicatorColorAnimationKey @"RCPageControlIndicatorColorAnimation"
@@ -31,9 +31,9 @@
 
 @interface RCPageControl ()
 
-@property (nonatomic) NSInteger currentDisplayedPage;
-@property (nonatomic) NSInteger previousDisplayPage;
-@property (nonatomic) UILabel *indicatorIndexLabel;
+@property (nonatomic, assign) NSInteger currentDisplayedPage;
+@property (nonatomic, assign) NSInteger previousDisplayPage;
+@property (nonatomic, strong) UILabel *indicatorIndexLabel;
 
 @end
 
@@ -47,7 +47,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self commConfig];
+        [self usingDefaultConfigure];
     }
     
     return self;
@@ -66,22 +66,22 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self commConfig];
+    [self usingDefaultConfigure];
 }
 
-- (void)commConfig {
+- (void)usingDefaultConfigure {
     _currentDisplayedPage = 0;
     _previousDisplayPage = 0;
     
     _numberOfPages = 0;
     _currentPage = 0;
     
-    _indicatorDotGap = 10.f;
-    _indicatorDotWidth = 4.f;
+    _indicatorDotGap = 10.0;
+    _indicatorDotWidth = 4.0;
     
-    _animationSpeed = 8.f;
-    _animationBounciness = 12.f;
-    _animationDuration = .6f;
+    _animationSpeed = 8.0;
+    _animationBounciness = 12.0;
+    _animationDuration = 0.6;
     _animationScaleFactor = 2;
     
     _hidesForSinglePage = NO;
@@ -117,7 +117,7 @@
     [_indicatorIndexLabel setFont:[_currentPageIndexTextFont fontWithSize:[self _scaledDotMaxWidth] * 2 / 3]];
     
     [_indicatorIndexLabel setHidden:_hideCurrentPageIndex];
-
+    
     UIView *dot = [self _currentDisplayedDot];
     
     if (dot) {
@@ -142,7 +142,7 @@
     
     _currentPage = MIN(MAX(0, currentPage), _numberOfPages - 1);
     
-    if ( !self.defersCurrentPageDisplay || forceRefresh) {
+    if (!self.defersCurrentPageDisplay || forceRefresh) {
         _currentDisplayedPage = _currentPage;
         [self _animateIndicator:forceRefresh];
     }
@@ -155,7 +155,7 @@
 - (void)setIndicatorDotGap:(CGFloat)indicatorDotGap {
     CGFloat gap = MAX(RCDefaultIndicatorDotGapMinValue, indicatorDotGap);
     
-    if ( !IsFloatEqualToFloat(_indicatorDotGap, gap)) {
+    if (!IsFloatEqualToFloat(_indicatorDotGap, gap)) {
         _indicatorDotGap = gap;
         
         [self _refreshIndicator:YES];
@@ -165,7 +165,7 @@
 - (void)setIndicatorDotWidth:(CGFloat)indicatorDotWidth {
     CGFloat width = MAX(RCDefaultIndicatorDotWidthMinValue, indicatorDotWidth);
     
-    if ( !IsFloatEqualToFloat(_indicatorDotWidth, width)) {
+    if (!IsFloatEqualToFloat(_indicatorDotWidth, width)) {
         _indicatorDotWidth = width;
         
         [self loadIndicatorIndexLabel];
@@ -174,7 +174,7 @@
 }
 
 - (void)setAnimationScaleFactor:(NSInteger)animationScaleFactor {
-    if ( _animationScaleFactor != animationScaleFactor) {
+    if (_animationScaleFactor != animationScaleFactor) {
         _animationScaleFactor = MAX(RCDefaultIndicatorDotScaleFactorMinValue, animationScaleFactor);
         
         [self loadIndicatorIndexLabel];
@@ -183,7 +183,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    if ( !CGRectEqualToRect(self.frame, frame)) {
+    if (!CGRectEqualToRect(self.frame, frame)) {
         [super setFrame:frame];
         [self _refreshIndicator:YES];
     }
@@ -204,28 +204,28 @@
 }
 
 - (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor {
-    if ( ![_pageIndicatorTintColor isEqual:pageIndicatorTintColor]) {
+    if (![_pageIndicatorTintColor isEqual:pageIndicatorTintColor]) {
         _pageIndicatorTintColor = pageIndicatorTintColor;
         [self _refreshIndicator:YES];
     }
 }
 
 - (void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor {
-    if ( ![_currentPageIndicatorTintColor isEqual:currentPageIndicatorTintColor]) {
+    if (![_currentPageIndicatorTintColor isEqual:currentPageIndicatorTintColor]) {
         _currentPageIndicatorTintColor = currentPageIndicatorTintColor;
         [self _dotColorAnimationAtIndex:_currentDisplayedPage withProgress:RCDefaultIndicatorDotChangeProgressMaxValue];
     }
 }
 
 - (void)setCurrentPageIndexTintColor:(UIColor *)currentPageIndexTintColor {
-    if ( ![_currentPageIndexTextTintColor isEqual:currentPageIndexTintColor]) {
+    if (![_currentPageIndexTextTintColor isEqual:currentPageIndexTintColor]) {
         _currentPageIndexTextTintColor = currentPageIndexTintColor;
         [self loadIndicatorIndexLabel];
     }
 }
 
 - (void)setCurrentPageIndexTextFont:(UIFont *)currentPageIndexTextFont {
-    if ( ![_currentPageIndexTextFont isEqual:currentPageIndexTextFont]) {
+    if (![_currentPageIndexTextFont isEqual:currentPageIndexTextFont]) {
         _currentPageIndexTextFont = currentPageIndexTextFont;
         [self loadIndicatorIndexLabel];
     }
@@ -297,7 +297,7 @@
 
 - (void)_dotScaleAnimationAtIndex:(NSInteger)index toValue:(id)toValue {
     UIView *dot = [self _dotAtIndex:index];
-
+    
     [dot pop_removeAnimationForKey:RCDefaultIndicatorScaleAnimationKey];
     
     POPPropertyAnimation *animation;
@@ -319,7 +319,7 @@
 
 - (void)_dotColorAnimationAtIndex:(NSInteger)index toValue:(id)toValue {
     UIView *dot = [self _dotAtIndex:index];
-
+    
     [dot pop_removeAnimationForKey:RCDefaultIndicatorColorAnimationKey];
     
     POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewBackgroundColor];
@@ -331,7 +331,7 @@
 }
 
 - (void)_dotScaleAnimationAtIndex:(NSInteger)index withProgress:(CGFloat)progress {
-    [self _dotScaleAnimationAtIndex:index toValue:[NSValue valueWithCGPoint:CGPointMake(1.f + _animationScaleFactor * progress, 1.f +_animationScaleFactor * progress)]];
+    [self _dotScaleAnimationAtIndex:index toValue:[NSValue valueWithCGPoint:CGPointMake(1.0 + _animationScaleFactor * progress, 1.0 +_animationScaleFactor * progress)]];
 }
 
 - (void)_dotColorAnimationAtIndex:(NSInteger)index withProgress:(CGFloat)progress {
@@ -350,16 +350,16 @@
         
         [_indicatorIndexLabel setHidden:hidden];
         
-        if ( !hidden) {
+        if (!hidden) {
             [self bringSubviewToFront:_indicatorIndexLabel];
-
+            
             [_indicatorIndexLabel setCenter:[self _dotAtIndex:toPage].center];
             [_indicatorIndexLabel setText:[NSString stringWithFormat:@"%@", @(toPage + 1)]];
             
             POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-            alphaAnimation.fromValue = @(0.f);
-            alphaAnimation.toValue = @(1.f);
-            alphaAnimation.duration = _disableAnimation ? 0 : _animationDuration;
+            alphaAnimation.fromValue = @(0.0);
+            alphaAnimation.toValue = @(1.0);
+            alphaAnimation.duration = _disableAnimation ? 0.0 : _animationDuration;
             [_indicatorIndexLabel pop_addAnimation:alphaAnimation forKey:RCDefaultIndicatorIndexLabelAlphaAnimationKey];
         }
     }
@@ -367,22 +367,22 @@
 
 - (void)_animateIndicator:(BOOL)forceAnimate {
     if (forceAnimate || _previousDisplayPage != _currentDisplayedPage) {
-        [self _animationFromPage:_previousDisplayPage toPage:_currentDisplayedPage withProgress:1.f];
+        [self _animationFromPage:_previousDisplayPage toPage:_currentDisplayedPage withProgress:1.0];
     }
 }
 
 #pragma mark Indicator Refresh
 
 - (void)_refreshIndicator:(BOOL)forceRefresh {
-    if ( !(_hidesForSinglePage && _numberOfPages <= 1)) {
+    if (!(_hidesForSinglePage && _numberOfPages <= 1)) {
         [self setHidden:NO];
         
         if (forceRefresh || self.subviews.count != _numberOfPages) {
             CGPoint position = [self positionForNumberOfPages:self.numberOfPages];
             
             NSInteger index = 0;
-
-            for (; index < _numberOfPages; index ++) {
+            
+            for (; index < _numberOfPages; index++) {
                 CGRect frame = CGRectMake(position.x + index * (_indicatorDotGap + _indicatorDotWidth), position.y, _indicatorDotWidth, _indicatorDotWidth);
                 UIView *dot = [self _dotAtIndex:index] ?: [[UIView alloc] initWithFrame:frame];
                 
@@ -403,21 +403,21 @@
                 [dot.layer setMasksToBounds:YES];
                 [dot.layer setCornerRadius:dot.frame.size.height / 2];
                 
-                if ( !dot.superview) {
+                if (!dot.superview) {
                     [self addSubview:dot];
                 } else {
                     [dot setFrame:frame];
                 }
             }
             
-            for (; self.subviews.count && index < self.subviews.count - 1; index ++) {
+            for (; self.subviews.count && index < self.subviews.count - 1; index++) {
                 [[self _dotAtIndex:index] removeFromSuperview];
             }
             
             [self _animateIndicator:forceRefresh];
         }
         
-        if ( !_indicatorIndexLabel.superview) {
+        if (!_indicatorIndexLabel.superview) {
             [self addSubview:_indicatorIndexLabel];
         }
         
