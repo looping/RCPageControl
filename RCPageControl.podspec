@@ -6,8 +6,8 @@ Pod::Spec.new do |s|
   s.license     = { :type => "MIT", :file => "LICENSE" }
   s.authors     = { "Looping" => "www.looping@gmail.com" }
 
-  s.platform    = :ios, '6.0'
-  s.ios.deployment_target = '6.0'
+  s.platform    = :ios, '8.0'
+  s.ios.deployment_target = '8.0'
 
   s.source      = { :git => "https://github.com/RidgeCorn/RCPageControl.git", :tag => s.version.to_s }
   s.source_files = 'RCPageControl'
