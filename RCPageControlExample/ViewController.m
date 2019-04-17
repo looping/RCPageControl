@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "RCPageControl.h"
-#import <iCarousel.h>
+#import <iCarousel/iCarousel.h>
 
 @interface ViewController () <iCarouselDataSource, iCarouselDelegate>
 
@@ -43,7 +43,7 @@
             
             [_pageControlRC setCenter:({
                 CGPoint center = self.view.center;
-                center.y = self.view.frame.size.height - 160.f;
+                center.y = self.view.frame.size.height - 160.0;
                 center;
             })];
             
