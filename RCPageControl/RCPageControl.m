@@ -7,7 +7,7 @@
 //
 
 #import "RCPageControl.h"
-#import <pop/POP.h>
+#import "pop/POP.h"
 
 #define RCDefaultIndicatorDotBaseTag 1009
 
